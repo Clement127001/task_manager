@@ -1,3 +1,4 @@
+require("./db/connect");
 const express = require("express");
 const app = express();
 const tasksRoute = require("./routes/tasks");
@@ -14,7 +15,11 @@ app.use(express.json());
 //app.delete("/api/v1/tasks/:id") -> to delete the particular task
 
 app.get("/hello", (req, res) => {
-  res.status(200).send("Welcome to our new app no 1 taks manager");
+  res
+    .status(200)
+    .send(
+      "<h3>Welcome to the first application: <strong>Task Manager</strong></h3>"
+    );
 });
 
 app.use("/api/v1/tasks", tasksRoute);
