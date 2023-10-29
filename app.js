@@ -6,6 +6,7 @@ require("dotenv").config();
 
 //setting up the middleware
 app.use(express.json());
+app.use(express.static("./public"));
 
 //The app is going to have the following routes
 
@@ -14,14 +15,6 @@ app.use(express.json());
 //app.get("/api/v1/tasks/:id")    -> to get the details about the particular task
 //app.put("/api/v1/tasks/:id")    -> to update the particular task
 //app.delete("/api/v1/tasks/:id") -> to delete the particular task
-
-app.get("/hello", (req, res) => {
-  res
-    .status(200)
-    .send(
-      "<h3>Welcome to the first application: <strong>Task Manager</strong></h3>"
-    );
-});
 
 app.use("/api/v1/tasks", tasksRoute);
 
