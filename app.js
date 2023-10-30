@@ -4,6 +4,9 @@ const tasksRoute = require("./routes/tasks");
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
+const notFound = require("./middleware/not-found");
+const errorHandlerMiddleware = require("./middleware/error-handler");
+
 //setting up the middleware
 app.use(express.json());
 app.use(express.static("./public"));
@@ -17,6 +20,8 @@ app.use(express.static("./public"));
 //app.delete("/api/v1/tasks/:id") -> to delete the particular task
 
 app.use("/api/v1/tasks", tasksRoute);
+app.use(notFound);
+app.use(errorHandlerMiddleware);
 
 const port = 3000;
 
